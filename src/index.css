@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.shadow-terracotta-soft {
+    box-shadow: 0 20px 40px -10px rgba(192, 92, 66, 0.08);
+}
+
+.organic-dot::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #c05c42;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.asymmetric-offset-up { transform: translateY(-24px); }
+.asymmetric-offset-down { transform: translateY(24px); }
+
+@media (max-width: 768px) {
+    .asymmetric-offset-up, .asymmetric-offset-down { transform: none; }
+}
+
+@keyframes float { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-8px); } 
+} 
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+.animate-shake { animation: shake 0.3s ease-in-out; }
+
+.input-valid { border-color: #4d644f !important; }
+.input-invalid { border-color: #ba1a1a !important; }
+
+.facility-card-inner { position: relative; overflow: hidden; }
+.facility-caption { 
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    background: linear-gradient(to top, rgba(192, 92, 66, 0.9), rgba(192, 92, 66, 0.7));
+    color: white;
+    padding: 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(4px);
+}
+.group:hover .facility-caption { transform: translateY(0); }
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+.animate-marquee:hover { animation-play-state: paused; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.philosophy-card-animate { opacity: 0; }
+.philosophy-card-animate.is-visible { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.philosophy-card:hover { transform: scale(1.05) !important; }
+.philosophy-card:hover .icon-container { background-color: #c05c42 !important; color: #ffffff !important; }
+
+.program-content-wrapper { position: relative; overflow: hidden; }
+.program-pane { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease; }
+.program-pane.hidden { position: absolute; transform: translateX(50px); opacity: 0; pointer-events: none; }
+.program-pane.active { transform: translateX(0); opacity: 1; position: relative; }
+.program-pane.exit-left { transform: translateX(-50px); opacity: 0; position: absolute; }
+
+.heart-bullet { width: 14px; height: 14px; fill: #c05c42; flex-shrink: 0; margin-top: 4px; }
+
+.tab-btn.active { background-color: #c05c42; color: #ffffff; }
+
+.modal-overlay { 
+    background: rgba(0,0,0,0.4); 
+    backdrop-filter: blur(8px); 
+    transition: opacity 0.3s ease; 
+}
+
+.map-interactive:hover .map-marker { transform: translate(-50%, -100%) scale(1.1); }
+.map-marker { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+#mobile-menu-overlay { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+#mobile-menu-overlay.hidden-overlay { transform: translateY(-100%); }
